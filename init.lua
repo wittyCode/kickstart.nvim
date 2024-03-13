@@ -170,7 +170,7 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 -- remap to not replace buffer with token that was pasted over
 vim.keymap.set('x', '<leader>p', '"_dP')
 vim.keymap.set('n', '<leader>E', ':Neotree<CR>')
-vim.keymap.set('n', '<leader>EG', ':Neotree git_status float<CR>')
+vim.keymap.set('n', '<leader>G', ':Neotree git_status float<CR>')
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
