@@ -1,6 +1,7 @@
 vim.opt.hlsearch = true
 
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+vim.keymap.set('i', 'jj', '<Esc>')
 
 -- remap to not replace buffer with token that was pasted over
 vim.keymap.set('x', '<leader>p', '"_dP')
