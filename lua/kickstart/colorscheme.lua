@@ -10,8 +10,9 @@ return { -- You can easily change to a different colorscheme.
     -- Like many other themes, this one has different styles, and you could load
     -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
     vim.cmd.colorscheme 'catppuccin-mocha'
+    --[[ vim.cmd.colorscheme 'tokyonight-storm' ]]
 
     -- You can configure highlights by doing something like
-    vim.cmd.hi 'Comment gui=none'
+    vim.cmd.hi 'Comment gui=bold'
   end,
 }
