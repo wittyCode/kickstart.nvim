@@ -13,5 +13,10 @@ return { -- Adds git related signs to the gutter, as well as utilities for manag
       topdelete = { text = '‾' },
       changedelete = { text = '~' },
     },
+    current_line_blame_opts = {},
   },
+
+  vim.keymap.set('n', '<leader>gp', ':Gitsigns preview_hunk<CR>'),
+  vim.keymap.set('n', '<leader>grh', ':Gitsigns reset_hunk<CR>'),
+  vim.keymap.set('n', '<leader>glb', ':Gitsigns toggle_current_line_blame<CR>'),
 }
