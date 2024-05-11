@@ -178,6 +178,25 @@ return { -- LSP Configuration & Plugins
     -- tailwindcss
     require('lspconfig').tailwindcss.setup {}
 
+    -- vue
+    require('lspconfig').volar.setup {}
+    require('lspconfig').tsserver.setup {
+      init_options = {
+        plugins = {
+          {
+            name = '@vue/typescript-plugin',
+            location = '/opt/homebrew/lib/node_modules/@vue/typescript-plugin',
+            languages = { 'javascript', 'typescript', 'vue' },
+          },
+        },
+      },
+      filetypes = {
+        'javascript',
+        'typecript',
+        'vue',
+      },
+    }
+
     -- Ensure the servers and tools above are installed
     --  To check the current status of installed tools and/or manually install
     --  other tools, you can run
