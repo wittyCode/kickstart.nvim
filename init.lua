@@ -264,6 +264,7 @@ require('lazy').setup({
   require 'kickstart.plugins.autocomplete',
 
   require 'kickstart.colorscheme',
+  require 'kickstart.plugins.css-highlights',
 
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
