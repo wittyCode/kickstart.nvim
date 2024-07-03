@@ -9,6 +9,7 @@ vim.keymap.set('x', '<leader>p', '"_dP')
 -- open Neotree
 vim.keymap.set('n', '<leader>E', ':Neotree<CR>')
 vim.keymap.set('n', '<leader>G', ':Neotree git_status float<CR>')
+vim.keymap.set('n', '<leader>Eo', ':Neotree filesystem reveal left<CR>', {})
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
