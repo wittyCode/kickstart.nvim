@@ -8,6 +8,9 @@ return {
         tsserver_file_preferences = {
           importModuleSpecifierPreference = 'relative',
         },
+        --[[ tsserver_plugins = {
+          '@vue/typescript-plugin',
+        }, ]]
       },
     }
   end,

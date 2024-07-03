@@ -178,6 +178,12 @@ return { -- LSP Configuration & Plugins
     -- tailwindcss
     require('lspconfig').tailwindcss.setup {}
 
+    require('lspconfig').eslint.setup {
+      settings = {
+        format = false,
+      },
+    }
+
     -- vue
     require('lspconfig').volar.setup {}
     require('lspconfig').tsserver.setup {
