@@ -250,11 +250,7 @@ require('lazy').setup({
   {
     'm4xshen/autoclose.nvim',
     config = function()
-      require('autoclose').setup {
-        keys = {
-          ["'"] = { escape = true, close = false, pair = "''" },
-        },
-      }
+      require('autoclose').setup {}
     end,
   },
 
