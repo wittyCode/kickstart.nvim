@@ -114,6 +114,27 @@ return { -- LSP Configuration & Plugins
             callback = vim.lsp.buf.clear_references,
           })
         end
+        -- NOTE: this disables tsserver diagnostics if we have eslint configs since they double up with eslint
+        if client ~= nil and client.name == 'tsserver' then
+          --[[ local eslint_root_files = { ".eslintrc", ".eslintrc.js", ".eslintrc.json" } ]]
+          -- NOTE: we assume our eslint config always to be in the same directory as the package.json, so we search for it upwards from opened buffer
+          local current_file = vim.fn.expand '%:p'
+          local root_dir = vim.fs.dirname(vim.fs.find({ 'package.json' }, { upward = true, stop = '/Users/wittycode/dev/', path = current_file })[1])
+          -- TODO: now fix this to work not only for all possible root_file types
+          local eslint_config_exists = vim.fn.findfile('.eslintrc.js', root_dir, nil)
+
+          local enable_tsserver = true
+          if eslint_config_exists ~= '' then
+            --[[ if file_exists ~= 0 then ]]
+            enable_tsserver = false
+          end
+          local ns = vim.lsp.diagnostic.get_namespace(client.id)
+          --[[ vim.diagnostic.disable(nil, ns) ]]
+          vim.diagnostic.enable(enable_tsserver, {
+            ns_id = ns,
+            bufnr = nil,
+          })
+        end
       end,
     })
 
@@ -199,6 +220,8 @@ return { -- LSP Configuration & Plugins
       filetypes = {
         'javascript',
         'typecript',
+        'typescriptreact',
+        'javascriptreact',
         'vue',
       },
     }
