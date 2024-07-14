@@ -116,20 +116,26 @@ return { -- LSP Configuration & Plugins
         end
         -- NOTE: this disables tsserver diagnostics if we have eslint configs since they double up with eslint
         if client ~= nil and client.name == 'tsserver' then
-          --[[ local eslint_root_files = { ".eslintrc", ".eslintrc.js", ".eslintrc.json" } ]]
           -- NOTE: we assume our eslint config always to be in the same directory as the package.json, so we search for it upwards from opened buffer
           local current_file = vim.fn.expand '%:p'
           local root_dir = vim.fs.dirname(vim.fs.find({ 'package.json' }, { upward = true, stop = '/Users/wittycode/dev/', path = current_file })[1])
-          -- TODO: now fix this to work not only for all possible root_file types
-          local eslint_config_exists = vim.fn.findfile('.eslintrc.js', root_dir, nil)
+          -- NOTE: now we check whether one of the possible eslint config files is in the same directory (could we simplify and just do this from current buffer?)
+          local eslint_config_exists = vim.fs.find(
+            { '.eslintrc', '.eslintrc.js', '.eslintrc.json', '.eslintrc.cjs' },
+            { upward = true, stop = '/Users/wittycode/dev/', path = root_dir }
+          )[1]
+          -- WARN: this works!!!! but lets remove it later if more elegant version with fs.find works
+          --[[ local eslint_config_exists = vim.fn.findfile('.eslintrc', root_dir, nil) ]]
 
           local enable_tsserver = true
-          if eslint_config_exists ~= '' then
-            --[[ if file_exists ~= 0 then ]]
+          -- WARN: this works together with the eslint_config_exists that works
+          --[[ if eslint_config_exists ~= '' then ]]
+          -- NOTE: if fs.find does not find anything it returns nil in the first element of the array we check for, so if it is not nil, we know an eslinst config exists and disable tsserver
+          if eslint_config_exists ~= nil then
+            print(eslint_config_exists)
             enable_tsserver = false
           end
           local ns = vim.lsp.diagnostic.get_namespace(client.id)
-          --[[ vim.diagnostic.disable(nil, ns) ]]
           vim.diagnostic.enable(enable_tsserver, {
             ns_id = ns,
             bufnr = nil,
