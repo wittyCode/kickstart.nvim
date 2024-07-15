@@ -114,6 +114,12 @@ return { -- LSP Configuration & Plugins
             callback = vim.lsp.buf.clear_references,
           })
         end
+
+        --NOTE: enable java debugger
+        if client and client.name == 'jdtls' then
+          require('jdtls').setup_dap()
+        end
+
         -- NOTE: this disables tsserver diagnostics if we have eslint configs since they double up with eslint
         if client ~= nil and client.name == 'tsserver' then
           -- NOTE: we assume our eslint config always to be in the same directory as the package.json, so we search for it upwards from opened buffer
@@ -124,12 +130,8 @@ return { -- LSP Configuration & Plugins
             { '.eslintrc', '.eslintrc.js', '.eslintrc.json', '.eslintrc.cjs' },
             { upward = true, stop = '/Users/wittycode/dev/', path = root_dir }
           )[1]
-          -- WARN: this works!!!! but lets remove it later if more elegant version with fs.find works
-          --[[ local eslint_config_exists = vim.fn.findfile('.eslintrc', root_dir, nil) ]]
 
           local enable_tsserver = true
-          -- WARN: this works together with the eslint_config_exists that works
-          --[[ if eslint_config_exists ~= '' then ]]
           -- NOTE: if fs.find does not find anything it returns nil in the first element of the array we check for, so if it is not nil, we know an eslinst config exists and disable tsserver
           if eslint_config_exists ~= nil then
             print(eslint_config_exists)

@@ -255,6 +255,7 @@ require('lazy').setup({
   },
 
   require 'kickstart.plugins.lsp',
+  require 'kickstart.plugins.debug',
 
   require 'kickstart.plugins.autoformat',
 
