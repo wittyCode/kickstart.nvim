@@ -11,6 +11,8 @@ vim.keymap.set('n', '<leader>E', ':Neotree<CR>')
 vim.keymap.set('n', '<leader>G', ':Neotree git_status float<CR>')
 vim.keymap.set('n', '<leader>oE', ':Neotree filesystem reveal left<CR>', {})
 
+vim.keymap.set('n', '<leader>co', ':only<CR>', { desc = 'close all but current window' })
+
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })

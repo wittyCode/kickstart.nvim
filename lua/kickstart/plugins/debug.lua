@@ -23,6 +23,7 @@ return {
   config = function()
     local dap = require 'dap'
     local dapui = require 'dapui'
+    local jdtls = require 'jdtls'
 
     require('mason-nvim-dap').setup {
       -- Makes a best effort to setup the various debuggers with
@@ -50,6 +51,8 @@ return {
     vim.keymap.set('n', '<leader>dB', function()
       dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ')
     end, { desc = 'Debug: Set Breakpoint' })
+    vim.keymap.set('n', '<leader>tc', jdtls.test_class, { desc = 'Test class (DAP)' })
+    vim.keymap.set('n', '<leader>tm', jdtls.test_nearest_method, { desc = 'Test method (DAP)' })
 
     -- Dap UI setup
     -- For more information, see |:help nvim-dap-ui|

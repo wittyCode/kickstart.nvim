@@ -2,6 +2,10 @@ local bundles = {
   -- NOTE: update this with local filepath of java debug jar (e.g. after version change)
   vim.fn.glob '/Users/wittycode/dev/java/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-0.53.0.jar',
 }
+
+-- NOTE: this filepath needs to point to vscode-java-test jar
+vim.list_extend(bundles, vim.split(vim.fn.glob '/Users/wittycode/dev/java/vscode-java-test/server/*.jar', '\n'))
+
 local config = {
   cmd = { '/opt/homebrew/bin/jdtls' },
   root_dir = vim.fs.dirname(vim.fs.find({ 'gradlew', '.git', 'mvnw' }, { upward = true })[1]),
