@@ -17,6 +17,6 @@ return { -- Adds git related signs to the gutter, as well as utilities for manag
   },
 
   vim.keymap.set('n', '<leader>gp', ':Gitsigns preview_hunk<CR>'),
-  vim.keymap.set('n', '<leader>grh', ':Gitsigns reset_hunk<CR>'),
-  vim.keymap.set('n', '<leader>glb', ':Gitsigns toggle_current_line_blame<CR>'),
+  vim.keymap.set('n', '<leader>gr', ':Gitsigns reset_hunk<CR>'),
+  vim.keymap.set('n', '<leader>gb', ':Gitsigns toggle_current_line_blame<CR>'),
 }

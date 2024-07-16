@@ -19,4 +19,7 @@ return {
       },
     },
   },
+  vim.keymap.set('n', '<leader>E', ':Neotree<CR>'),
+  vim.keymap.set('n', '<leader>G', ':Neotree git_status float<CR>'),
+  vim.keymap.set('n', '<leader>oE', ':Neotree filesystem reveal left<CR>', {}),
 }

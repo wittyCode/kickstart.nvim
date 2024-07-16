@@ -6,11 +6,6 @@ vim.keymap.set('i', 'jj', '<Esc>')
 -- remap to not replace buffer with token that was pasted over
 vim.keymap.set('x', '<leader>p', '"_dP')
 
--- open Neotree
-vim.keymap.set('n', '<leader>E', ':Neotree<CR>')
-vim.keymap.set('n', '<leader>G', ':Neotree git_status float<CR>')
-vim.keymap.set('n', '<leader>oE', ':Neotree filesystem reveal left<CR>', {})
-
 vim.keymap.set('n', '<leader>co', ':only<CR>', { desc = 'close all but current window' })
 
 -- Diagnostic keymaps

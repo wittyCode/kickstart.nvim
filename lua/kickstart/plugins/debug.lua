@@ -43,6 +43,9 @@ return {
     }
 
     -- Basic debugging keymaps, feel free to change to your liking!
+    vim.keymap.set('n', '<leader>or', function()
+      dap.repl.toggle { height = 15 }
+    end, { desc = 'Debug: Open REPL' })
     vim.keymap.set('n', '<leader>dc', dap.continue, { desc = 'Debug: Start/Continue' })
     vim.keymap.set('n', '<leader>dsi', dap.step_into, { desc = 'Debug: Step Into' })
     vim.keymap.set('n', '<leader>dsov', dap.step_over, { desc = 'Debug: Step Over' })
@@ -53,6 +56,9 @@ return {
     end, { desc = 'Debug: Set Breakpoint' })
     vim.keymap.set('n', '<leader>tc', jdtls.test_class, { desc = 'Test class (DAP)' })
     vim.keymap.set('n', '<leader>tm', jdtls.test_nearest_method, { desc = 'Test method (DAP)' })
+
+    -- jdtls focused keymaps
+    vim.keymap.set('n', '<leader>oi', jdtls.organize_imports, { desc = 'Organize imports ' })
 
     -- Dap UI setup
     -- For more information, see |:help nvim-dap-ui|
