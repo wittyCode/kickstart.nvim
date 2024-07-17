@@ -272,9 +272,6 @@ require('lazy').setup({
 
   require 'kickstart.plugins.mini-plugin',
 
-  -- game-ified VIM learning
-  { 'ThePrimeagen/vim-be-good' },
-
   require 'kickstart.plugins.treesitter',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
