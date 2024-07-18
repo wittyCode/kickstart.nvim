@@ -118,6 +118,9 @@ return { -- LSP Configuration & Plugins
         --NOTE: enable java debugger
         if client and client.name == 'jdtls' then
           require('jdtls').setup_dap()
+          vim.opt.tabstop = 4
+          vim.opt.softtabstop = 4
+          vim.opt.shiftwidth = 4
         end
 
         -- NOTE: this disables tsserver diagnostics if we have eslint configs since they double up with eslint
@@ -247,6 +250,7 @@ return { -- LSP Configuration & Plugins
     local ensure_installed = vim.tbl_keys(servers or {})
     vim.list_extend(ensure_installed, {
       'stylua', -- Used to format lua code
+      'eslint-lsp',
     })
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 

@@ -200,7 +200,7 @@ vim.opt.rtp:prepend(lazypath)
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup({
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
-  'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
+  -- 'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
   -- TODO: check if this is better disabled, since currently both tsserver and typescript-tools run
   -- require 'kickstart.plugins.typescript', -- typescript lsp and more
   require 'kickstart.plugins.prettier',
