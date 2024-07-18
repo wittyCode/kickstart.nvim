@@ -22,17 +22,24 @@ return { -- Autocompletion
     --  into multiple repos for maintenance purposes.
     'hrsh7th/cmp-nvim-lsp',
     'hrsh7th/cmp-path',
+    'hrsh7th/cmp-vsnip',
+    'hrsh7th/vim-vsnip',
 
     -- If you want to add a bunch of pre-configured snippets,
     --    you can use this plugin to help you. It even has snippets
     --    for various frameworks/libraries/etc. but you will have to
     --    set up the ones that are useful for you.
     -- 'rafamadriz/friendly-snippets',
+
+    -- pretty icons
+    'onsails/lspkind.nvim',
   },
   config = function()
     -- See `:help cmp`
     local cmp = require 'cmp'
     local luasnip = require 'luasnip'
+    local lspkind = require 'lspkind'
+
     luasnip.config.setup {}
 
     cmp.setup {
@@ -43,6 +50,20 @@ return { -- Autocompletion
       },
       completion = { completeopt = 'menu,menuone,noinsert' },
 
+      formatting = {
+        format = function(entry, vim_item)
+          -- fancy icons and a name of kind
+          vim_item.kind = lspkind.presets.default[vim_item.kind] .. ' ' .. vim_item.kind
+          -- set a name for each source
+          vim_item.menu = ({
+            nvim_lsp = '+',
+            buffer = '#',
+            luasnip = '-',
+            cmp_tabnine = '[Tn]',
+          })[entry.source.name]
+          return vim_item
+        end,
+      },
       -- For an understanding of why these mappings were
       -- chosen, you will need to read `:help ins-completion`
       --
