@@ -47,9 +47,9 @@ return {
       dap.repl.toggle { height = 15 }
     end, { desc = 'Debug: Open REPL' })
     vim.keymap.set('n', '<leader>dc', dap.continue, { desc = 'Debug: Start/Continue' })
-    vim.keymap.set('n', '<leader>dsi', dap.step_into, { desc = 'Debug: Step Into' })
-    vim.keymap.set('n', '<leader>dsov', dap.step_over, { desc = 'Debug: Step Over' })
-    vim.keymap.set('n', '<leader>dso', dap.step_out, { desc = 'Debug: Step Out' })
+    vim.keymap.set('n', '<leader>dl', dap.step_into, { desc = 'Debug: Step Into' })
+    vim.keymap.set('n', '<leader>dj', dap.step_over, { desc = 'Debug: Step Over' })
+    vim.keymap.set('n', '<leader>dk', dap.step_out, { desc = 'Debug: Step Out' })
     vim.keymap.set('n', '<leader>db', dap.toggle_breakpoint, { desc = 'Debug: Toggle Breakpoint' })
     vim.keymap.set('n', '<leader>dB', function()
       dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ')
@@ -88,6 +88,35 @@ return {
     dap.listeners.after.event_initialized['dapui_config'] = dapui.open
     dap.listeners.before.event_terminated['dapui_config'] = dapui.close
     dap.listeners.before.event_exited['dapui_config'] = dapui.close
+
+    -- WARN: this is just doc of how the function was set up outside of keymap
+    -- function attach_to_debug()
+    --   local dap = require 'dap'
+    --   dap.configurations.java = {
+    --     {
+    --       type = 'java',
+    --       request = 'attach',
+    --       name = 'Attach to the process',
+    --       hostName = 'localhost',
+    --       port = '5005',
+    --     },
+    --   }
+    --   dap.continue()
+    -- end
+
+    -- TODO: see if I can make this work, but right now it would be enough to just run the main class in debug mode
+    -- vim.keymap.set('n', '<leader>da', function()
+    --   dap.configurations.java = {
+    --     {
+    --       type = 'java',
+    --       request = 'attach',
+    --       name = 'Attach to the process',
+    --       hostName = '127.0.0.1',
+    --       port = '5005',
+    --     },
+    --   }
+    --   dap.continue()
+    -- end, { desc = 'debugger: attach to running debug server' })
 
     -- Install golang specific config
     require('dap-go').setup()
