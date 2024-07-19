@@ -38,7 +38,7 @@ vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower win
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
 -- java and spring boot
-function get_spring_boot_runner(profile, debug)
+local function get_spring_boot_runner(profile, debug)
   local debug_param = ''
   if debug then
     debug_param = '--spring-boot.run.jvmArguments="-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=127.0.0.1:5005" '
@@ -77,7 +77,7 @@ end
 -- end
 
 -- TODO: add other profiles?, probably for different keymaps
-function run_spring_boot(debug)
+local function run_spring_boot(debug)
   vim.cmd('term ' .. get_spring_boot_runner('local', debug))
 end
 

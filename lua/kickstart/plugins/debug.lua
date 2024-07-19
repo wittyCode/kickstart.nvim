@@ -26,6 +26,7 @@ return {
     local jdtls = require 'jdtls'
 
     require('mason-nvim-dap').setup {
+      automatic_installation = false,
       -- Makes a best effort to setup the various debuggers with
       -- reasonable debug configurations
       automatic_setup = true,
@@ -68,6 +69,8 @@ return {
       --    Don't feel like these are good choices.
       icons = { expanded = '▾', collapsed = '▸', current_frame = '*' },
       controls = {
+        element = 'repl',
+        enabled = true,
         icons = {
           pause = '⏸',
           play = '▶',
