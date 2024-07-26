@@ -44,10 +44,10 @@ return { -- Autocompletion
     local lspkind = require 'lspkind'
 
     require('luasnip.loaders.from_vscode').lazy_load()
-    require('luasnip.loaders.from_vscode').lazy_load { paths = { vim.fn.stdpath 'config' } }
+    -- require('luasnip.loaders.from_vscode').lazy_load { paths = { vim.fn.stdpath 'config' .. '/snippets' } }
 
     -- add specific snippets, find examples in repo of rafamadriz/friendly-snippets
-    luasnip.filetype_extend('java', { 'javadoc' })
+    luasnip.filetype_extend('java', { 'javadoc', 'java-testing' })
 
     luasnip.config.setup {}
 
