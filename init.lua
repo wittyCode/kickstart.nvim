@@ -203,7 +203,7 @@ require('lazy').setup({
   -- 'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
   -- TODO: check if this is better disabled, since currently both tsserver and typescript-tools run
   -- require 'kickstart.plugins.typescript', -- typescript lsp and more
-  require 'kickstart.plugins.prettier',
+
   require 'kickstart.plugins.lspsaga',
 
   -- java lsp plugin

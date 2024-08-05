@@ -4,6 +4,7 @@ return { -- Autoformat
     notify_on_error = false,
     format_on_save = {
       timeout_ms = 500,
+      async = false,
       lsp_fallback = true,
     },
     formatters_by_ft = {
@@ -13,7 +14,16 @@ return { -- Autoformat
       --
       -- You can use a sub-list to tell conform to run *until* a formatter
       -- is found.
-      -- javascript = { { "prettierd", "prettier" } },
+      javascript = { 'prettier' },
+      typescript = { 'prettier' },
+      javascriptreact = { 'prettier' },
+      typescriptreact = { 'prettier' },
+      vue = { 'prettier' },
+      svelte = { 'prettier' },
+      css = { 'prettier' },
+      html = { 'prettier' },
+      json = { 'prettier' },
+      yaml = { 'prettier' },
     },
   },
 }
