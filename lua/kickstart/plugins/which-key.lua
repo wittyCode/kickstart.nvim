@@ -10,7 +10,7 @@ return { -- Useful plugin to show you pending keybinds.
       { '<leader>c_', hidden = true },
       { '<leader>d', group = '[D]ebug' },
       { '<leader>d_', hidden = true },
-      { '<leader>r', group = '[R]ename' },
+      { '<leader>r', group = '[R]ename / [R]un' },
       { '<leader>r_', hidden = true },
       { '<leader>s', group = '[S]earch' },
       { '<leader>s_', hidden = true },
@@ -20,6 +20,8 @@ return { -- Useful plugin to show you pending keybinds.
       { '<leader>t_', hidden = true },
       { '<leader>g', group = '[G]itsigns' },
       { '<leader>g_', hidden = true },
+      { '<leader>b', group = '[B]uild' },
+      { '<leader>b_', hidden = true },
     }
   end,
 }

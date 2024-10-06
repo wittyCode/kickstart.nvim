@@ -162,6 +162,9 @@ vim.opt.scrolloff = 10
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 require 'kickstart.keymaps'
+require 'kickstart.java_keymaps'
+require 'kickstart.gradle_keymaps'
+require 'kickstart.maven_keymaps'
 
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 -- [[ Basic Autocommands ]]
