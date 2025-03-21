@@ -124,13 +124,13 @@ return { -- LSP Configuration & Plugins
         end
 
         -- NOTE: this disables tsserver diagnostics if we have eslint configs since they double up with eslint
-        if client ~= nil and client.name == 'tsserver' then
+        if client ~= nil and (client.name == 'tsserver' or client.name == 'ts_ls') then
           -- NOTE: we assume our eslint config always to be in the same directory as the package.json, so we search for it upwards from opened buffer
           local current_file = vim.fn.expand '%:p'
           local root_dir = vim.fs.dirname(vim.fs.find({ 'package.json' }, { upward = true, stop = '/Users/wittycode/dev/', path = current_file })[1])
           -- NOTE: now we check whether one of the possible eslint config files is in the same directory (could we simplify and just do this from current buffer?)
           local eslint_config_exists = vim.fs.find(
-            { '.eslintrc', '.eslintrc.js', '.eslintrc.json', '.eslintrc.cjs' },
+            { '.eslintrc', '.eslintrc.js', '.eslintrc.json', 'eslint.config.js', '.eslintrc.cjs' },
             { upward = true, stop = '/Users/wittycode/dev/', path = root_dir }
           )[1]
 
@@ -218,7 +218,7 @@ return { -- LSP Configuration & Plugins
 
     -- vue
     require('lspconfig').volar.setup {}
-    require('lspconfig').tsserver.setup {
+    require('lspconfig').ts_ls.setup {
       init_options = {
         plugins = {
           {
