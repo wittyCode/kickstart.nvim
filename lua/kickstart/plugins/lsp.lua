@@ -208,7 +208,17 @@ return { -- LSP Configuration & Plugins
     }
 
     -- tailwindcss
-    require('lspconfig').tailwindcss.setup {}
+    require('lspconfig').tailwindcss.setup {
+      filetypes = {
+        'templ',
+        'vue',
+        'html',
+        'javascript',
+        'typescript',
+        'react',
+        'htmlangular',
+      },
+    }
 
     require('lspconfig').eslint.setup {
       settings = {
@@ -254,6 +264,7 @@ return { -- LSP Configuration & Plugins
     vim.list_extend(ensure_installed, {
       'stylua', -- Used to format lua code
       'eslint-lsp',
+      'tailwindcss',
     })
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
