@@ -226,6 +226,7 @@ require('lazy').setup({
   -- catppuccin theme
   { 'catppuccin/nvim', name = 'catppuccin', priority = 1000 },
 
+  require 'kickstart.plugins.noice',
   require 'kickstart.plugins.gitsigns',
   require 'kickstart.plugins.tmux-navigator',
 

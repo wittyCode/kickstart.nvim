@@ -240,9 +240,11 @@ return { -- LSP Configuration & Plugins
       },
       filetypes = {
         'javascript',
+        'javascriptreact',
+        'javascript.jsx',
         'typescript',
         'typescriptreact',
-        'javascriptreact',
+        'typescript.tsx',
         'vue',
       },
     }
